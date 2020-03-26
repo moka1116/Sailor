@@ -1,0 +1,13 @@
+salesforce:
+  jwt:
+    client-id : 3MVG9wEVwV0C9ejA6qblAhtDB_4tDtyWet6mk0X0uKlXnH2PwNnFg_AcFytL6oQsZGXEPjPrm0Kx0yuJtrIP.
+    subject: kamil.motyka16+sailor@gmail.com
+    audience: https://login.salesforce.com
+    expiration-in-minutes: 5
+spring:
+  autoconfigure:
+    exclude=org.springframework.boot.autoconfigure.security.SecurityAutoConfiguration
+
+
+#Key_Generation
+#openssl req -newkey rsa:2048 -nodes -keyout key.pem -x509 -days 365 -out certificate.pem

@@ -18,14 +18,13 @@ public class LeadController {
 	@PostMapping(value = "/test")
 	String createLead(@RequestParam String company, @RequestParam String lastName) {
 		facade.createLead(company, lastName);
-		return "succes";
+		return "Success!";
 	}
 
-	@GetMapping(value ="/Accounts")
-	HttpEntity<String> getAccounts(){
-	return facade.getAccounts();
+	@GetMapping(value = "/Accounts")
+	HttpEntity<String> getAccounts() {
+		return facade.getAccounts();
 	}
-
 
 
 }

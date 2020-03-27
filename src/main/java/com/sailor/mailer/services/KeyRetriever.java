@@ -1,4 +1,4 @@
-package com.sailor.mailer.JWT;
+package com.sailor.mailer.services;
 
 import java.security.Key;
 

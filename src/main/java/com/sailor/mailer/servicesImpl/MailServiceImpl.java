@@ -1,7 +1,9 @@
 package com.sailor.mailer.servicesImpl;
 
+import com.sailor.mailer.configuration.MailConfiguration;
 import com.sailor.mailer.services.MailService;
-import org.springframework.beans.factory.annotation.Value;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import javax.mail.*;
@@ -11,25 +13,23 @@ import java.util.Date;
 import java.util.Properties;
 
 @Service
+@RequiredArgsConstructor
+@Slf4j
 public class MailServiceImpl implements MailService {
 
-	@Value("${sailor.dev.mail.smtp.user}")
-	private String usr;
-
-	@Value("${sailor.dev.mail.smtp.password}")
-	private String pswd;
+	private final MailConfiguration mailConfiguration;
 
 	public void sendMail(String tst) throws AddressException, MessagingException, IOException {
 		Properties props = new Properties();
-		props.put("mail.smtp.auth", "true");
-		props.put("mail.smtp.starttls.enable", "true");
-		props.put("mail.smtp.host", "smtp.gmail.com");
-		props.put("mail.smtp.port", "587");
+		props.put("mail.smtp.auth", mailConfiguration.getAuth());
+		props.put("mail.smtp.starttls.enable", mailConfiguration.getEnableTls());
+		props.put("mail.smtp.host", mailConfiguration.getHost());
+		props.put("mail.smtp.port", mailConfiguration.getPort());
 
 		Session session = Session.getInstance(props, new javax.mail.Authenticator() {
 
 			protected PasswordAuthentication getPasswordAuthentication() {
-				return new PasswordAuthentication(usr, pswd);
+				return new PasswordAuthentication(mailConfiguration.getUser(), mailConfiguration.getPassword());
 			}
 		});
 

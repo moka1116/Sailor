@@ -4,20 +4,18 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
-import static com.sun.activation.registries.LogSupport.log;
-
-@Service
+@Component
 @RequiredArgsConstructor
 @Slf4j
-public class AutoKeyRetriever {
-	private static final Logger logger = LoggerFactory.getLogger(AutoKeyRetriever.class);
+public class KeyReader {
+	private static final Logger logger = LoggerFactory.getLogger(KeyReader.class);
 
 	public String retrieveKey() {
 		StringBuilder pemKey = new StringBuilder();
@@ -39,9 +37,6 @@ public class AutoKeyRetriever {
 		} catch (IOException ex) {
 			logger.error("Error reading file '" + fileName + "'");
 		}
-		logger.error("test error");
-		logger.debug("test debug");
-		logger.warn("test warn");
 		return pemKey.toString();
 	}
 }

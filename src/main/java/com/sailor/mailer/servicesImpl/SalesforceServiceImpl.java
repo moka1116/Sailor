@@ -2,13 +2,16 @@ package com.sailor.mailer.servicesImpl;
 
 import com.sailor.mailer.DAO.Account;
 import com.sailor.mailer.DAO.Lead;
-import com.sailor.mailer.JWT.KeyRetriever;
+import com.sailor.mailer.services.KeyRetriever;
 import com.sailor.mailer.JWT.SalesforceToken;
 import com.sailor.mailer.configuration.SalesforceConfiguration;
 import io.jsonwebtoken.Jwts;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.*;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -77,12 +80,11 @@ public class SalesforceServiceImpl {
 	}
 
 	public ResponseEntity<String> getAccounts() {
-	SalesforceToken token = getToken();
-	HashSet<Account> accounts = new HashSet<>();
+		SalesforceToken token = getToken();
+		HashSet<Account> accounts = new HashSet<>();
+		HttpEntity<String> entity = new HttpEntity<>("body", getHeader(token));
 
-	HttpEntity<String> entity = new HttpEntity<>("body", getHeader(token));
-
-	return restTemplate.exchange(token.getInstanceUrl() + "/services/data/v39.0/sobjects/Account", GET,entity,String.class);
+		return restTemplate.exchange(token.getInstanceUrl() + "/services/data/v39.0/sobjects/Account", GET, entity, String.class);
 
 	}
 }

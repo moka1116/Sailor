@@ -25,7 +25,7 @@ public class EmailProcessController {
 
 	@PostMapping(value = "/mail")
 	public String sendEmail(@RequestParam String content) throws IOException, MessagingException {
-		logger.info(content);
+		logger.warn(content);
 		mailSender.sendMail(content);
 		return "Email sent successfully";
 	}

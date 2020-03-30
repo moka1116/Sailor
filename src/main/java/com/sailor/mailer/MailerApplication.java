@@ -20,3 +20,12 @@ public class MailerApplication {
 		return new RestTemplate();
 	}
 }
+
+/*TODO
+-Block double email on SFDC
+-Pass whole email
+-Add Statyo(Statistic module)
+-Add database
+-Store emails
+-Add dashboard
+ */

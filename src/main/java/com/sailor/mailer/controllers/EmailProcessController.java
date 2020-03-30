@@ -1,17 +1,20 @@
 package com.sailor.mailer.controllers;
 
+import com.sailor.mailer.JWT.KeyReader;
 import com.sailor.mailer.servicesImpl.MailServiceImpl;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.mail.MessagingException;
 import java.io.IOException;
-import java.util.Map;
 
 @RestController
 public class EmailProcessController {
+	private static final Logger logger = LoggerFactory.getLogger(KeyReader.class);
 
 	private final MailServiceImpl mailSender;
 
@@ -21,8 +24,9 @@ public class EmailProcessController {
 	}
 
 	@PostMapping(value = "/mail")
-	public String sendEmail(@RequestBody Map<String, String> jsonMap) throws IOException, MessagingException {
-		mailSender.sendMail(jsonMap.toString());
+	public String sendEmail(@RequestParam String content) throws IOException, MessagingException {
+		logger.info(content);
+		mailSender.sendMail(content);
 		return "Email sent successfully";
 	}
 

@@ -1,5 +1,6 @@
 package com.sailor.mailer.servicesImpl;
 
+import com.sailor.mailer.DAO.EmailMessage;
 import com.sailor.mailer.JWT.KeyReader;
 import com.sailor.mailer.configuration.MailConfiguration;
 import com.sailor.mailer.services.MailService;
@@ -23,8 +24,8 @@ public class MailServiceImpl implements MailService {
 	private final MailConfiguration mailConfiguration;
 	private static final Logger logger = LoggerFactory.getLogger(KeyReader.class);
 
-	public void sendMail(String content) throws AddressException, MessagingException, IOException {
-		logger.warn(content);
+	public void sendMail(EmailMessage content) throws AddressException, MessagingException, IOException {
+		logger.warn(content.toString());
 
 		Properties props = new Properties();
 		props.put("mail.smtp.auth", mailConfiguration.getAuth());
@@ -41,9 +42,9 @@ public class MailServiceImpl implements MailService {
 
 		Message msg = new MimeMessage(session);
 
-		msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse("ka.motyka@o2.pl"));
-		msg.setSubject("Tutorials point email");
-		msg.setContent("Tutorials point email", "text/html");
+		msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse(content.getToAddress()));
+		msg.setSubject(content.getSubject());
+		msg.setContent(content.getTextBody(), "text/html");
 		msg.setSentDate(new Date());
 
 		MimeBodyPart messageBodyPart = new MimeBodyPart();

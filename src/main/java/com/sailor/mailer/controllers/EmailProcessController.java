@@ -1,13 +1,13 @@
 package com.sailor.mailer.controllers;
 
+import com.sailor.mailer.DAO.EmailMessage;
 import com.sailor.mailer.JWT.KeyReader;
 import com.sailor.mailer.servicesImpl.MailServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
 
 import javax.mail.MessagingException;
 import java.io.IOException;
@@ -28,6 +28,15 @@ public class EmailProcessController {
 	public String sendEmail(@RequestBody Map<String,String> content) throws IOException, MessagingException {
 		logger.warn(content.toString());
 		//mailSender.sendMail(content);
+		return "Email sent successfully";
+	}
+
+	@RequestMapping(value = "/mailer", method = RequestMethod.POST,
+			consumes = MediaType.APPLICATION_JSON_VALUE,
+			produces = {MediaType.APPLICATION_ATOM_XML_VALUE, MediaType.APPLICATION_JSON_VALUE})
+	public String tests(@RequestBody EmailMessage content) throws IOException, MessagingException {
+		logger.warn(content.toString());
+		mailSender.sendMail(content);
 		return "Email sent successfully";
 	}
 

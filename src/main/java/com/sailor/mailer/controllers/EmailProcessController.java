@@ -1,6 +1,5 @@
 package com.sailor.mailer.controllers;
 
-import com.sailor.mailer.DAO.EmailMessage;
 import com.sailor.mailer.JWT.KeyReader;
 import com.sailor.mailer.servicesImpl.MailServiceImpl;
 import org.slf4j.Logger;
@@ -12,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.mail.MessagingException;
 import java.io.IOException;
+import java.util.Map;
 
 @RestController
 public class EmailProcessController {
@@ -25,7 +25,7 @@ public class EmailProcessController {
 	}
 
 	@PostMapping(value = "/mail")
-	public String sendEmail(@RequestBody EmailMessage content) throws IOException, MessagingException {
+	public String sendEmail(@RequestBody Map<String,String> content) throws IOException, MessagingException {
 		logger.warn(content.toString());
 		//mailSender.sendMail(content);
 		return "Email sent successfully";

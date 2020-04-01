@@ -24,7 +24,7 @@ public class MailServiceImpl implements MailService {
 	private final MailConfiguration mailConfiguration;
 	private static final Logger logger = LoggerFactory.getLogger(KeyReader.class);
 
-	public void sendMail(EmailMessage content) throws AddressException, MessagingException, IOException {
+	public void sendMail(String content) throws AddressException, MessagingException, IOException {
 		logger.warn(content.toString());
 
 		Properties props = new Properties();
@@ -46,12 +46,12 @@ public class MailServiceImpl implements MailService {
 		Message msg = new MimeMessage(session);
 
 		msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse("ka.motyka@o2.pl"));
-		msg.setSubject(content.getSubject());
+		msg.setSubject("content.getSubject()");
 		//msg.setContent, "text/html");
 		msg.setSentDate(new Date());
 
 		MimeBodyPart messageBodyPart = new MimeBodyPart();
-		messageBodyPart.setContent(content.getTextBody(), "text/html");
+		messageBodyPart.setContent("content.getTextBody()", "text/html");
 
 		Multipart multipart = new MimeMultipart();
 		multipart.addBodyPart(messageBodyPart);
@@ -61,4 +61,8 @@ public class MailServiceImpl implements MailService {
 	}
 
 
+	@Override
+	public void sendMail(EmailMessage content) throws MessagingException, IOException {
+
+	}
 }

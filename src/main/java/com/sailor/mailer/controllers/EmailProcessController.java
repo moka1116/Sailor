@@ -32,7 +32,7 @@ public class EmailProcessController {
 	@RequestMapping(value = "/mailer", method = RequestMethod.POST,consumes = MediaType.APPLICATION_JSON_VALUE)
 	public String tests(@RequestBody String content) throws IOException, MessagingException {
 		logger.warn(content);
-		//mailSender.sendMail(content);
+		mailSender.sendMail(content);
 		return "Email sent successfully";
 	}
 

@@ -31,6 +31,9 @@ public class MailServiceImpl implements MailService {
 		props.put("mail.smtp.auth", mailConfiguration.getAuth());
 		props.put("mail.smtp.starttls.enable", mailConfiguration.getEnableTls());
 		props.put("mail.smtp.host", mailConfiguration.getHost());
+		props.put("mail.properties.mail.smtp.connectiontimeout", 10000);
+		props.put("mail.properties.mail.smtp.timeout", 10000);
+		props.put("mail.properties.mail.smtp.writetimeout", 10000);
 
 
 		Session session = Session.getInstance(props, new javax.mail.Authenticator() {
@@ -48,7 +51,7 @@ public class MailServiceImpl implements MailService {
 		msg.setSentDate(new Date());
 
 		MimeBodyPart messageBodyPart = new MimeBodyPart();
-		messageBodyPart.setContent(content, "text/html");
+		messageBodyPart.setContent(content.getTextBody(), "text/html");
 
 		Multipart multipart = new MimeMultipart();
 		multipart.addBodyPart(messageBodyPart);
@@ -56,5 +59,6 @@ public class MailServiceImpl implements MailService {
 		msg.setContent(multipart);
 		Transport.send(msg);
 	}
+
 
 }

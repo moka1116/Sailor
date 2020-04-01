@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.mail.MessagingException;
 import java.io.IOException;
-import java.util.Map;
 
 @RestController
 public class EmailProcessController {
@@ -25,15 +24,13 @@ public class EmailProcessController {
 	}
 
 	@PostMapping(value = "/mail")
-	public String sendEmail(@RequestBody Map<String,String> content) throws IOException, MessagingException {
+	public String sendEmail(@RequestParam String content) throws IOException, MessagingException {
 		logger.warn(content.toString());
 		//mailSender.sendMail(content);
 		return "Email sent successfully";
 	}
 
-	@RequestMapping(value = "/mailer", method = RequestMethod.POST,
-			consumes = MediaType.APPLICATION_JSON_VALUE,
-			produces = {MediaType.APPLICATION_ATOM_XML_VALUE, MediaType.APPLICATION_JSON_VALUE})
+	@RequestMapping(value = "/mailer", method = RequestMethod.POST,consumes = MediaType.APPLICATION_JSON_VALUE)
 	public String tests(@RequestBody EmailMessage content) throws IOException, MessagingException {
 		logger.warn(content.toString());
 		mailSender.sendMail(content);

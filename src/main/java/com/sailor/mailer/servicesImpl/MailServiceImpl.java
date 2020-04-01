@@ -47,11 +47,11 @@ public class MailServiceImpl implements MailService {
 
 		msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse("ka.motyka@o2.pl"));
 		msg.setSubject(content.getSubject());
-		msg.setContent(content.getTextBody(), "text/html");
+		//msg.setContent, "text/html");
 		msg.setSentDate(new Date());
 
 		MimeBodyPart messageBodyPart = new MimeBodyPart();
-		messageBodyPart.setContent("content.getTextBody()", "text/html");
+		messageBodyPart.setContent(content.getTextBody(), "text/html");
 
 		Multipart multipart = new MimeMultipart();
 		multipart.addBodyPart(messageBodyPart);

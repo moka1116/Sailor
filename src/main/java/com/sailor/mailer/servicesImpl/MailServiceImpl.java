@@ -26,6 +26,7 @@ public class MailServiceImpl implements MailService {
 
 	public void sendMail(String content) throws AddressException, MessagingException, IOException {
 		logger.warn(content.toString());
+		logger.warn("etr");
 
 		Properties props = new Properties();
 		props.put("mail.smtp.auth", mailConfiguration.getAuth());

@@ -51,7 +51,7 @@ public class MailServiceImpl implements MailService {
 		msg.setSentDate(new Date());
 
 		MimeBodyPart messageBodyPart = new MimeBodyPart();
-		messageBodyPart.setContent("content.getTextBody()", "text/html");
+		messageBodyPart.setContent(content, "text/html");
 
 		Multipart multipart = new MimeMultipart();
 		multipart.addBodyPart(messageBodyPart);

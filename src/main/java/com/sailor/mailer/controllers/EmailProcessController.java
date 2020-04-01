@@ -30,7 +30,7 @@ public class EmailProcessController {
 		return "Email sent successfully";
 	}
 
-	@RequestMapping(value = "/mailer", method = RequestMethod.POST,consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+	@RequestMapping(value = "/mailer", method = RequestMethod.POST,consumes = MediaType.ALL_VALUE)
 	public String tests(@RequestBody EmailMessage content) throws IOException, MessagingException {
 		logger.warn(content.toString());
 		mailSender.sendMail(content);

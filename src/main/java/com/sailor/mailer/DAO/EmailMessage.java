@@ -1,24 +1,30 @@
 package com.sailor.mailer.DAO;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonRawValue;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
 public class EmailMessage {
 
-	@JsonProperty("Name")
-	public String name;
-	@JsonProperty("Value")
-	public String value;
+	@JsonRawValue
+	@JsonProperty("Subject")
+	String subject;
 
-	/*@JsonRawValue
+	@JsonRawValue
+	@JsonProperty("TextBody")
+	String textBody;
+
+	@JsonRawValue
 	@JsonProperty("FromName")
 	String fromName;
+
 	@JsonRawValue
 	@JsonProperty("FromAddress")
 	String fromAddress;
+
 	@JsonRawValue
 	@JsonProperty("ToAddress")
-	String toAddress;*/
+	String toAddress;
 
 }

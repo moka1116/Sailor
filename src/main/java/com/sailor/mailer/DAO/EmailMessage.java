@@ -2,10 +2,10 @@ package com.sailor.mailer.DAO;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonRawValue;
-import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.Value;
 
-@AllArgsConstructor
+@Data
 @Value
 public class EmailMessage {
 

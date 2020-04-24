@@ -6,13 +6,10 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class EmailMessage {
 
-	//@JsonRawValue
-	@JsonProperty("Subject")
-	String subject;
-
-	//@JsonRawValue
-	@JsonProperty("TextBody")
-	String textBody;
+	@JsonProperty("Name")
+	public String name;
+	@JsonProperty("Value")
+	public String value;
 
 	/*@JsonRawValue
 	@JsonProperty("FromName")

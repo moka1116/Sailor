@@ -1,6 +1,7 @@
 package com.sailor.mailer.DAO;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonRawValue;
 import lombok.Data;
 import lombok.Value;
 
@@ -8,11 +9,11 @@ import lombok.Value;
 @Value
 public class EmailMessage {
 
-	//@JsonRawValue
+	@JsonRawValue
 	@JsonProperty("Subject")
 	String subject;
 
-	//@JsonRawValue
+	@JsonRawValue
 	@JsonProperty("TextBody")
 	String textBody;
 

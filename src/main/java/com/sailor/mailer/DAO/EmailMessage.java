@@ -1,11 +1,9 @@
 package com.sailor.mailer.DAO;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Data;
-import lombok.Value;
+import lombok.AllArgsConstructor;
 
-@Data
-@Value
+@AllArgsConstructor
 public class EmailMessage {
 
 	//@JsonRawValue

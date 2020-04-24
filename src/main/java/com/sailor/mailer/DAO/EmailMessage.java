@@ -12,10 +12,12 @@ public class EmailMessage {
 	@JsonRawValue
 	@JsonProperty("Subject")
 	String subject;
+
 	@JsonRawValue
 	@JsonProperty("TextBody")
 	String textBody;
-	@JsonRawValue
+
+	/*@JsonRawValue
 	@JsonProperty("FromName")
 	String fromName;
 	@JsonRawValue
@@ -23,6 +25,6 @@ public class EmailMessage {
 	String fromAddress;
 	@JsonRawValue
 	@JsonProperty("ToAddress")
-	String toAddress;
+	String toAddress;*/
 
 }

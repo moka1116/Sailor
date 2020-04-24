@@ -11,18 +11,7 @@ public class EmailMessage {
 
 	@JsonRawValue
 	@JsonProperty("Subject")
-	private String subject;
-	@JsonRawValue
-	@JsonProperty("TextBody")
-	private String textBody;
-	@JsonRawValue
-	@JsonProperty("FromName")
-	private String fromName;
-	@JsonRawValue
-	@JsonProperty("FromAddress")
-	private String fromAddress;
-	@JsonRawValue
-	@JsonProperty("ToAddress")
-	private String toAddress;
+	String subject;
+
 
 }

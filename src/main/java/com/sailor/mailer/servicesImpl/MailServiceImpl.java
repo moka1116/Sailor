@@ -64,6 +64,6 @@ public class MailServiceImpl implements MailService {
 
 	@Override
 	public void sendMail(EmailMessage content) throws MessagingException, IOException {
-
+		logger.warn(content.getToAddress());
 	}
 }

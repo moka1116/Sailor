@@ -34,6 +34,9 @@ public class EmailProcessController {
 	public String tests(@RequestBody EmailMessage content) throws IOException, MessagingException {
 		logger.warn(content.toString());
 		mailSender.sendMail(content);
+		logger.warn("do");
+		logger.warn("did");
+		logger.warn("done");
 		return "Email sent successfully";
 	}
 

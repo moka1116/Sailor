@@ -29,4 +29,8 @@ public class EmailMessage {
 	@JsonProperty("ToAddress")
 	String toAddress;
 
+	@JsonRawValue
+	@JsonProperty("Status")
+	String status;
+
 }

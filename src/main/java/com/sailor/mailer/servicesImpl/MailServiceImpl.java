@@ -50,7 +50,7 @@ public class MailServiceImpl implements MailService {
 		msg.setSentDate(new Date());
 
 		MimeBodyPart messageBodyPart = new MimeBodyPart();
-		messageBodyPart.setContent(emailMessage.getTextBody(), "text/html");
+		messageBodyPart.setContent(emailMessage.getTextBody()+"Send by spring", "text/html");
 
 		Multipart multipart = new MimeMultipart();
 		multipart.addBodyPart(messageBodyPart);

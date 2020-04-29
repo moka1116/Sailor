@@ -33,6 +33,40 @@ public class EmailMessage {
 	@JsonProperty("Status")
 	String status;
 
+	@JsonRawValue
+	@JsonProperty("IsDeleted")
+	String IsDeleted;
 
+	@JsonRawValue
+	@JsonProperty("IsTracked")
+	String IsTracked;
+
+	@JsonRawValue
+	@JsonProperty("Incoming")
+	String Incoming;
+
+	@JsonRawValue
+	@JsonProperty("IsBounced")
+	String IsBounced;
+
+	@JsonRawValue
+	@JsonProperty("IsExternallyVisible")
+	String IsExternallyVisible;
+
+	@JsonRawValue
+	@JsonProperty("IsClientManaged")
+	String IsClientManaged;
+
+	@JsonRawValue
+	@JsonProperty("HasAttachment")
+	String HasAttachment;
+
+	@JsonRawValue
+	@JsonProperty("IsOpened")
+	String IsOpened;
+
+	@JsonRawValue
+	@JsonProperty("IsPrivateDraft")
+	String IsPrivateDraft;
 
 }

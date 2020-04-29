@@ -1,5 +1,6 @@
 package com.sailor.mailer.controllers;
 
+import com.sailor.mailer.DAO.EmailMessage;
 import com.sailor.mailer.JWT.KeyReader;
 import com.sailor.mailer.servicesImpl.MailServiceImpl;
 import org.slf4j.Logger;
@@ -29,21 +30,12 @@ public class EmailProcessController {
 		return "Email sent successfully";
 	}
 
-	/*@RequestMapping(value = "/mailer", method = RequestMethod.POST,consumes = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "/mailer", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public String tests(@RequestBody EmailMessage content) throws IOException, MessagingException {
 		logger.warn(content.toString());
 		mailSender.sendMail(content);
 		return "Email sent successfully";
 	}
-	*/
-
-	@RequestMapping(value = "/mailer", method = RequestMethod.POST,consumes = MediaType.APPLICATION_JSON_VALUE)
-	public String tests(@RequestBody String content) throws IOException, MessagingException {
-		logger.warn(content);
-	//	mailSender.sendMail(content);
-		return "Email sent successfully";
-	}
-
 
 }
 

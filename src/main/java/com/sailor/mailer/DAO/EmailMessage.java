@@ -33,4 +33,6 @@ public class EmailMessage {
 	@JsonProperty("Status")
 	String status;
 
+
+
 }

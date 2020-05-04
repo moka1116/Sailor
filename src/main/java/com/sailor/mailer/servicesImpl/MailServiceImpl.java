@@ -2,6 +2,7 @@ package com.sailor.mailer.servicesImpl;
 
 import com.sailor.mailer.DAO.EmailMessage;
 import com.sailor.mailer.JWT.KeyReader;
+import com.sailor.mailer.JWT.SessionEstablisher;
 import com.sailor.mailer.configuration.MailConfiguration;
 import com.sailor.mailer.services.MailService;
 import lombok.RequiredArgsConstructor;
@@ -10,11 +11,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
-import javax.mail.*;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.Multipart;
+import javax.mail.Transport;
 import javax.mail.internet.*;
 import java.io.IOException;
 import java.util.Date;
-import java.util.Properties;
 
 @Service
 @RequiredArgsConstructor
@@ -22,28 +25,13 @@ import java.util.Properties;
 public class MailServiceImpl implements MailService {
 
 	private final MailConfiguration mailConfiguration;
+	private final SessionEstablisher sessionEstablisher;
 	private static final Logger logger = LoggerFactory.getLogger(KeyReader.class);
 
 	public void sendMail(EmailMessage emailMessage) throws AddressException, MessagingException, IOException {
 
 
-		Properties props = new Properties();
-		props.put("mail.smtp.auth", mailConfiguration.getAuth());
-		props.put("mail.smtp.starttls.enable", mailConfiguration.getEnableTls());
-		props.put("mail.smtp.host", mailConfiguration.getHost());
-		props.put("mail.properties.mail.smtp.connectiontimeout", 10000);
-		props.put("mail.properties.mail.smtp.timeout", 10000);
-		props.put("mail.properties.mail.smtp.writetimeout", 10000);
-
-
-		Session session = Session.getInstance(props, new javax.mail.Authenticator() {
-
-			protected PasswordAuthentication getPasswordAuthentication() {
-				return new PasswordAuthentication(mailConfiguration.getUser(), mailConfiguration.getPassword());
-			}
-		});
-
-		Message msg = new MimeMessage(session);
+		Message msg = new MimeMessage(sessionEstablisher.establishSession());
 
 		msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse("ka.motyka@o2.pl"));
 		msg.setSubject(emailMessage.getSubject());

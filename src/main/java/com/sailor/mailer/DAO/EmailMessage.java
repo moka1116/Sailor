@@ -69,4 +69,8 @@ public class EmailMessage {
 	@JsonProperty("IsPrivateDraft")
 	String IsPrivateDraft;
 
+	@JsonRawValue
+	@JsonProperty("EmailTemplateId")
+	String EmailTemplateId;
+
 }

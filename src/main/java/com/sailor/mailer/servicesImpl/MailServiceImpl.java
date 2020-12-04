@@ -45,6 +45,7 @@ public class MailServiceImpl implements MailService {
 
 		msg.setContent(multipart);
 		Transport.send(msg);
+		logger.warn("msg send");
 	}
 
 

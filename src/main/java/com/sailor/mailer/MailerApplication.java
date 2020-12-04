@@ -22,10 +22,9 @@ public class MailerApplication {
 }
 
 /*TODO
--Block double email on SFDC
--Pass whole email
--Add Statyo(Statistic module)
 -Add database
 -Store emails
+-Block double email on SFDC
+-Add Statyo(Statistic module)
 -Add dashboard
  */

@@ -15,7 +15,6 @@ import java.util.Properties;
 public class SessionEstablisher {
 
 	private final MailConfiguration mailConfiguration;
-//	private static final Logger logger = LoggerFactory.getLogger(SessionEstablisher.class);
 
 	public Session establishSession(){
 		Properties props = new Properties();

@@ -23,16 +23,8 @@ public class EmailProcessController {
 		this.mailSender = mailSender;
 	}
 
-	@PostMapping(value = "/mail")
-	public String tests(@RequestParam String content) throws IOException, MessagingException {
-		logger.warn(content.toString());
-		//mailSender.sendMail(content);
-		return "Email sent successfully";
-	}
-
 	@RequestMapping(value = "/mailer", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public String sendEmail(@RequestBody EmailMessage content) throws IOException, MessagingException {
-	//public String tests(@RequestBody String content) throws IOException, MessagingException {
 		logger.warn(content.toString());
 		mailSender.sendMail(content);
 		return "Email sent successfully";
